@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Earthquake Info</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Select a Place and Detail Type</h1>
+  <form action="/view" method="POST">
+    <label>Select Location:</label>
+    <select name="locationID" required>
+      <% locations.forEach(loc => { %>
+        <option value="<%= loc.LocationID %>">
+          <%= loc.City %>, <%= loc.Country %>
+        </option>
+      <% }) %>
+    </select>
+
+    <label>Choose Details:</label>
+    <select name="detailType" required>
+      <option value="damage">Damage</option>
+      <option value="rescue">Rescue Efforts</option>
+      <option value="animals">Animals Affected</option>
+    </select>
+
+    <button type="submit">View Details</button>
+  </form>
+</body>
+</html>

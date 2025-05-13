@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>Earthquake Details</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h2>Earthquake in <%= earthquake.City %></h2>
+  <p><strong>Date:</strong> <%= earthquake.Date.toISOString().slice(0, 10) %></p>
+  <p><strong>Magnitude:</strong> <%= earthquake.Magnitude %></p>
+  <p><strong>Epicenter:</strong> <%= earthquake.Epicenter %></p>
+  <p><strong>Depth:</strong> <%= earthquake.Depth %> km</p>
+
+  <h3><%= detailLabel %></h3>
+
+  <% if (details.length === 0) { %>
+    <p>No data available.</p>
+  <% } else { %>
+    <table border="1">
+      <tr>
+        <% Object.keys(details[0]).forEach(key => { %>
+          <th><%= key %></th>
+        <% }) %>
+      </tr>
+      <% details.forEach(row => { %>
+        <tr>
+          <% Object.values(row).forEach(val => { %>
+            <td><%= val %></td>
+          <% }) %>
+        </tr>
+      <% }) %>
+    </table>
+  <% } %>
+
+  <br>
+  <a href="/">← Go Back</a>
+</body>
+</html>
